@@ -13,13 +13,13 @@ export const App = () => {
     zip: "",
     phone: ""
   };
-  // guests = state object, setGuests = function to call object, parens = default value.
+  // guests = state object, setGuests = function to call object (this.setState), parens = default value.
   const [guests, setGuests] = useState([]);
   const [editing, setEditing] = useState(false);
   const [currentGuest, setCurrentGuest] = useState(initialFormState);
 
-  // takes function triggered by component lifecycle events
-  // components are rerendered everytime state is updated!
+  // takes callback function triggered by component lifecycle events
+  // components are re-rendered every time state is updated!
   useEffect(() => {
     setGuests([
       {
@@ -34,6 +34,7 @@ export const App = () => {
     ]);
     //alert("Yoo hoo!");
     // Brackets hold what to watch, in this case nothing.
+    // So don't run useEffect on any little update.
   }, []);
 
   const addGuest = guest => {

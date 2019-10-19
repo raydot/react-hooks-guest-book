@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export const AddGuestForm = props => {
+  const nameInputEl = useRef(null);
+
   const initialFormState = {
     id: null,
     name: "",
@@ -23,10 +25,18 @@ export const AddGuestForm = props => {
 
   const handleSubmit = event => {
     event.preventDefault(); // so we don't submit via POST
-
+    console.log("Event!");
     props.addGuest(guest);
     setGuest(initialFormState);
   };
+
+  const setInitialFocus = () => {
+    nameInputEl.current.focus();
+  };
+
+  useEffect(() => {
+    setInitialFocus();
+  });
 
   return (
     <form onSubmit={handleSubmit}>
@@ -34,6 +44,7 @@ export const AddGuestForm = props => {
         <label htmlFor="name">Name</label>
         <input
           required
+          ref={nameInputEl}
           type="text"
           name="name"
           value={guest.name}

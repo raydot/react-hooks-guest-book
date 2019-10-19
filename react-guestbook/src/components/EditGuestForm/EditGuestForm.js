@@ -13,7 +13,7 @@ export const EditGuestForm = props => {
 
   const handleSubmit = event => {
     event.preventDefault(); // so we don't submit via POST
-
+    console.log("EVENT!");
     props.updateGuest(guest);
   };
 
