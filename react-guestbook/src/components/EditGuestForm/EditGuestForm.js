@@ -4,7 +4,7 @@ export const EditGuestForm = props => {
   //data, and function, and initial state
   const [guest, setGuest] = useState(props.currentGuest);
 
-  // generic handle input change
+  // generic handle input changed
   const handleInputChanged = event => {
     const { name, value } = event.target;
 
@@ -91,7 +91,7 @@ export const EditGuestForm = props => {
         />
       </div>
 
-      <button className="btn btn-primary" type="submit">
+      <button className="btn btn-primary mr-2" type="submit">
         Update Guest
       </button>
       <button

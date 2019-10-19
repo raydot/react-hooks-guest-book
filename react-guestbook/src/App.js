@@ -64,7 +64,7 @@ export const App = () => {
     setEditing(false);
 
     //write them all, except for the one you just changed
-    setGuests(guests.map(guest => (guest.id === id ? updateGuest : guest)));
+    setGuests(guests.map(guest => (guest.id === id ? updatedGuest : guest)));
   };
 
   return (
@@ -92,7 +92,11 @@ export const App = () => {
         </div>
         <div className="col">
           <h2>Guests</h2>
-          <GuestList deleteGuest={deleteGuest} guests={guests} />
+          <GuestList
+            deleteGuest={deleteGuest}
+            editGuest={editGuest}
+            guests={guests}
+          />
         </div>
       </div>
     </div>
