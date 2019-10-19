@@ -21,7 +21,11 @@ export const GuestList = props => {
                 <button type="button" className="btn btn-warning mr-2">
                   Edit
                 </button>
-                <button type="button" className="btn btn-danger">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() => props.deleteGuest(guest.id)}
+                >
                   Delete
                 </button>
               </td>

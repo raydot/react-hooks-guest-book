@@ -1,18 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export const AddGuestForm = props => {
-  const initialFormState = {
-    id: null,
-    name: "",
-    street: "",
-    city: "",
-    state: "",
-    zip: "",
-    phone: ""
-  };
-
+export const EditGuestForm = props => {
   //data, and function, and initial state
-  const [guest, setGuest] = useState(initialFormState);
+  const [guest, setGuest] = useState(props.currentGuest);
 
   // generic handle input change
   const handleInputChanged = event => {
@@ -24,9 +14,13 @@ export const AddGuestForm = props => {
   const handleSubmit = event => {
     event.preventDefault(); // so we don't submit via POST
 
-    props.addGuest(guest);
-    setGuest(initialFormState);
+    props.updateGuest(guest);
   };
+
+  useEffect(() => {
+    setGuest(props.currentGuest);
+    //array of dependencies
+  }, [props]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -98,7 +92,13 @@ export const AddGuestForm = props => {
       </div>
 
       <button className="btn btn-primary" type="submit">
-        Add Guest
+        Update Guest
+      </button>
+      <button
+        className="btn btn-secondary"
+        onClick={() => props.setEditing(false)}
+      >
+        Cancel
       </button>
     </form>
   );
